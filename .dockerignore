@@ -1,0 +1,21 @@
+#generic
+*.secret
+
+# Exclude version control files and directories
+.git
+.gitignore
+
+# Exclude Python bytecode files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Exclude virtual environment
+.venv
+
+# Exclude local development files and directories
+*.log
+*.db
+*.sqlite3
+.env

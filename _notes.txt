@@ -1,0 +1,56 @@
+Model - represents your data
+View - accepts requests and gets your data
+Template - the visual page of the data
+
+####
+Learning Python as a DevOps Engineer is mandatory to reach the heights of the career as many DevOps tools and tasks can be facilitated or automated using Python.
+
+Here's a structured approach to learning Python tailored for DevOps professionals:
+
+1. Understand the Basics of Python:
+  - Syntax & Semantics: Familiarize yourself with Python's simple and readable syntax.
+  - Data Types: Learn about strings, numbers, lists, dictionaries, tuples, and sets.
+  - Control Flow: Understand loops, conditionals, and exceptions.
+  - Functions: Learn how to define and call functions. Understand the concept of arguments, return values, and scope.
+  - File Handling: Learn to read and write files, which is crucial for scripting.
+
+2. Intermediate Python Concepts:
+  - Modules and Packages: Learn how to import and use Python's vast library of modules.
+  - Object-Oriented Programming (OOP): Familiarize yourself with classes, objects, inheritance, and polymorphism.
+  - List Comprehensions: An elegant way to create lists.
+  - Generators and Iterators: Important for working with streams of data.
+
+3. Python for Automation:
+  - Scripting: Write scripts to automate regular tasks. Learn about command-line arguments, working with external processes, and automation tools.
+  - Python Libraries for DevOps:
+   - os and sys: Basic operating system interactions.
+   - subprocess: To spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+   - paramiko: For SSH-based interactions.
+   - requests: For HTTP requests.
+
+4. Python for Infrastructure:
+  - Infrastructure as Code (IaC): Learn about tools like Ansible (which uses YAML but can be extended with Python) and Terraform.
+  - Cloud Providers' SDKs: AWS Boto3, Google Cloud's Python Client, Azure SDK for Python can be used to manage and automate cloud resources.
+
+5. Version Control and CI/CD:
+  - Git Automation: Use libraries like GitPython to automate Git operations.
+  - CI/CD Integration: Familiarize yourself with Python clients for Jenkins, CircleCI, or TravisCI.
+
+6. Containerization & Orchestration:
+  - Docker SDK for Python: Helps in automating Docker operations.
+  - Kubernetes Python Client: For automating tasks in Kubernetes clusters.
+
+7. Networking:
+  - socket: Understand the basics of network programming in Python.
+  - Automate network tasks, especially if you work with tools like Cisco's network automation tools or use Netmiko for SSH connections to routers and switches.
+
+8. Databases:
+  - Learn to interact with databases using Python, whether it's SQL databases (using libraries like SQLAlchemy) or NoSQL databases.
+
+10. Best Practices:
+  - Testing: Write tests for your scripts using `unittest` or `pytest`.
+  - Virtual Environments: Use `venv` or `pipenv` to manage project-specific dependencies.
+
+11. Projects:
+  - Create real-world projects or scripts that automate some tasks in your current DevOps workflow.
+  ######

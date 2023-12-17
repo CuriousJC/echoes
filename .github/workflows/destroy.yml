@@ -1,0 +1,37 @@
+name: Destroy
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_rds_admin: ${{ vars.TF_VAR_RDS_ADMIN }}
+      TF_VAR_rds_admin_password: ${{ vars.TF_VAR_RDS_ADMIN_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          ls
+          echo test, and deploy your project.
+
+      - name: AWS Creds
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Modify to your desired AWS region
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+        working-directory: terraform
