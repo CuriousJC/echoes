@@ -1,29 +1,24 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8
+# Start with a minimal Go image
+FROM golang:1.21 AS builder
 
-# Set environment variables for Python and Django
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Install system dependencies including MySQL client library
-RUN apt-get update && \
-    apt-get install -y mariadb-client
-
-# Set MySQL client configurations
-ENV MYSQLCLIENT_CFLAGS="-I/usr/include/mysql"
-ENV MYSQLCLIENT_LDFLAGS="-L/usr/lib/x86_64-linux-gnu -lmysqlclient"
-
-# Set the working directory in the container
+# Set working directory inside container
 WORKDIR /app
 
-# Copy your Django project files into the container
-COPY . /app/
+# Copy Go files and build the binary
+COPY main.go .
+RUN go mod init github.com/curiousjc/echoes && go mod tidy
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o echoes .
 
-# Install the project's dependencies from requirements.txt
-RUN pip install -r requirements.txt
+# Use a small base image for final container
+FROM alpine:latest
 
-# Expose the port on which your Django application will run
-EXPOSE 8000
+WORKDIR /root/
+COPY --from=builder /app/echoes .
 
-# Specify the command to run when the container starts
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN chmod +x /root/echoes
+
+# Expose the port
+EXPOSE 8020
+
+# Run the binary
+CMD ["./echoes"]

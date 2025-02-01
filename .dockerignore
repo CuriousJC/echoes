@@ -5,17 +5,14 @@
 .git
 .gitignore
 
-# Exclude Python bytecode files
-__pycache__
-*.pyc
-*.pyo
-*.pyd
+# Exclude Go binaries and object files
+*.exe
+*.o
+*.a
 
-# Exclude virtual environment
-.venv
+# Exclude test and documentation files
+*_test.go
+*.md
 
-# Exclude local development files and directories
-*.log
-*.db
-*.sqlite3
-.env
+# Exclude build-related files and directories
+bin/
